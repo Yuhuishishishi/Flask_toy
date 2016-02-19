@@ -1,0 +1,47 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}
+    Show all programs
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="page-header">
+            <h1>Show all programs</h1>
+        </div>
+    </div>
+    <br>
+
+    <div class="container">
+        <a href="{{ url_for('add_program') }}" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-plus"></span> Add a program</a>
+        <br>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Name Plate</td>
+                    <td>Year</td>
+                    <td>CDSID</td>
+                    <td>Comment</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in all_programs %}
+                    <tr>
+                        <td>{{ p.id }}</td>
+                        <td>{{ p.name_plate }}</td>
+                        <td>{{ p.year }}</td>
+                        <td>{{ p.cdsid }}</td>
+                        <td>{{ p.comment }}</td>
+                        <td><a href="/delete/{{ p.id }}" class="btn btn-danger btn-sm">Delete</a> </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+
+        </table>
+
+
+    </div>
+{% endblock %}
